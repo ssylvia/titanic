@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">
+    <meta name="Keywords" content="Titanic, Esri, Story Map, History">
+	<meta name="description" content="A century ago the Titanic collided with an iceberg in the North Atlantic and sank. Mapping travelers’ hometowns reveals the immigrant status of most third-class passengers, who also suffered the highest fatality rate.">
+	<link rel="shortcut icon" type="image/ico" href="http://www.esri.com/favicon.ico">
+    <title>Geography, class, and fate: Passengers on the Titanic - A story map presented by Esri</title>
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.8/js/dojo/dijit/themes/tundra/tundra.css"> 
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+
+     <script type="text/javascript">
+      var djConfig = {
+        parseOnLoad: true
+      };
+    </script>
+    <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.8compact"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="javascript/excanvas.min.js"></script><![endif]-->
+    <script type="text/javascript">
+	  var iPad = false;
+	  $(document).ready(function(e) {
+		if(navigator.userAgent.match(/iPad/i) != null){
+		  iPad = true;
+		  $("#chartArea").css("padding-top","0px");
+		  $(".surLeg").css("top","44px");
+		  $(".perLeg").css("top","44px");
+		  $("#surv").css("top","155px");
+		  $("#per").css("top","155px");
+		}
+	  });
+	</script>
+    <script type="text/javascript" src="javascript/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="javascript/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="javascript/routeData.js"></script>
+    <script type="text/javascript" src="javascript/data.js"></script>
+    <script type="text/javascript" src="javascript/map.js"></script>
+    <script type="text/javascript" src="javascript/layout.js"></script>
+    <script type="text/javascript">
+      
+    var configOptions;
+    
+    function init(){
+    
+      configOptions = {
+        //Enter a title, if no title is specified, the webmap's title is used.
+        title : "Geography, class, and fate: Passengers on the <em>Titanic</em>",
+        //Enter a subtitle, if not specified the ArcGIS.com web map's summary is used
+        subtitle : "A century ago the <em>Titanic</em> collided with an iceberg in the North Atlantic and sank. Mapping travelers’ hometowns reveals the immigrant status of most third-class passengers, who also suffered the highest fatality rate."
+      };
+        initMap();
+		layoutStartup();
+    }
+
+    //show map on load 
+    dojo.addOnLoad(init);
+    </script>
+    
+    <style type="text/css">
+	  .esriSimpleSlider{
+	    background-color:#dadada;
+	  }
+	</style>
+    <!--Social Media Links-->
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "77225c91-2742-42f7-b1b4-bddda99a9bde"}); </script>
+    <!--END Social Media Links-->
+    <!--Google Analytics Start-->
+	<script type="text/javascript">
+  	  var _gaq = _gaq || [];
+  	  _gaq.push(['_setAccount', 'UA-26529417-1']);
+  	  _gaq.push(['_trackPageview']);
+
+  	  (function() {
+   	     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    	   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  	  })();
+	</script>
+	<!--Google Analytics End-->
+  </head>	
+   
+      <body class="tundra">
+        <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline"
+        gutters="false" style="width:100%; height:100%;">
+
+          <!-- Header Section-->
+          <div id="header" dojotype="dijit.layout.ContentPane" region="top">
+          	<div id="headerText">
+              <div id="title"></div>
+              <div id="subtitle"></div>
+            </div>
+            <div id="logoArea">
+              <div id="social"><a id="msLink" href="http://storymaps.esri.com" target="_blank">A story map </a><span class='st_facebook'></span><span class='st_twitter'></span>
+              </div>
+              <div id="logo"><a id="logoLink" href="http://www.esri.com" target="_blank"><img id="logoImg" src="images/esriGlobeLogow.png" alt="Esri - Home"></a></div>
+            </div>
+        <div id="header_flourish"></div>
+    
+          </div>
+          
+          <div id="content" dojotype="dijit.layout.BorderContainer" gutters="false" region="center">
+          
+          <!--Sidebar Section-->
+          <div dojotype="dijit.layout.BorderContainer" id="leftPane" region="left" gutters="false">
+          	<div id="selectorCon" dojotype="dijit.layout.ContentPane" region="top">
+            <h2 class="selectHeader"><span class="bolded red">Select a class</span> to view survival rates and home towns</h2>
+            <h2 class="selectHeader"><span class="bolded red">Click on locations</span> for passenger lists and destination cities</h2>
+            </div><!--/selectorCon-->
+            <div id="chartArea" dojotype="dijit.layout.ContentPane" region="center">
+            	<img id="selectArrow" src="images/selectArrow.png" alt="">
+                <div id="info">
+                	<div id="allPassCount">1,317</div>
+                    <div id="allPassText">Passengers</div>
+                    <div id="pieChart"></div>
+                    <span id="surv" class="oc"><span class="ocNum" id="surPassCount">500</span><br /><span class="ocText" id="surPassText">Survived</span></span>
+                    <span id="per"  class="oc"><span class="ocNum" id="perPassCount">817</span><br /><span class="ocText" id="perPassText">Died</span></span>
+                </div>
+                <div id="passConHeader"><strong style="color:#900">Click a passenger</strong> for more <br />information<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Survived&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Died</span>
+                	<span class="surLeg"></span>
+                    <span class="perLeg"></span>
+                </div>
+                <div id="disclaimer">Totals do not include Titanic's crew of nearly 900 people.</div>
+	            <div id="passCon"></div>
+            </div><!--/chartArea-->
+            <div id="sources" dojotype="dijit.layout.ContentPane" region="bottom">
+            	<h2 id="src" class="selectHeader"><span class="bolded">Source:</span> Wikipedia’s list of <br /><a id="srcLink" href="http://en.wikipedia.org/wiki/Passengers_of_the_RMS_Titanic" target="_blank"><em>Titanic passengers</em></a></h2>	
+            </div>
+          </div><!--/leftPane-->
+			
+          <div id="rightPane" dojotype="dijit.layout.BorderContainer" gutters="false" region="center">
+          
+          <div id="passSelectorCon" dojotype="dijit.layout.ContentPane" region="top">
+          	<span id="toggle0" onClick="selectClass(0)" class="passSelector selectedClass">All Passengers</span>
+            <span id="toggle1" onClick="selectClass(1)" class="passSelector">First Class</span>
+            <span id="toggle2" onClick="selectClass(2)" class="passSelector">Second Class</span>
+            <span id="toggle3" onClick="selectClass(3)" id="passSelLast" class="passSelector">Third Class</span>
+          </div>
+          
+          <!-- Map Section -->
+          <div id="map" dojotype="dijit.layout.ContentPane" region="center">
+          	<div id="shadowDiv"></div>
+            <div id="hoverInfo"></div>
+            <div id='hometown' class='passTip'></div>
+            <img id="htArrow" class="ttArrow" src="images/tooltipTop.png" alt="">
+            <div id='destination' class='passTip'></div>
+            <img id="dstArrow" class="ttArrow" src="images/tooltipTop.png" alt="">
+            <div id='boarded' class='passTip'></div>
+            <img id="bdArrow" class="ttArrow" src="images/tooltipTop.png" alt="">
+            <div id="selectAllContent" class="passengerContent"><div class="text">More than 2,200 people were on board the Titanic when it struck an iceberg the night of April 14, 1912. The Titanic’s <a href="http://en.wikipedia.org/wiki/List_of_crew_members_on_board_RMS_Titanic" target="_blank">crew</a> of nearly 900 is not included here.</div></div>
+            <div id="selectFirstContent" class="passengerContent"><div class="text">First class passengers hailed mainly from U.S. and European cities. Despite orders to put women and children in lifeboats first, survival rates were highest in first class. Most children were in steerage.</div></div>
+            <div id="selectSecondContent" class="passengerContent"><div class="text">Travelers in second class enjoyed fewer amenities aboard the Titanic. Their hometowns were more widely scattered, and their ranks included the only black family on board, traveling from Paris to Haiti.</div></div>
+            <div id="selectThirdContent" class="passengerContent"><div class="text">Immigrants comprised the bulk of steerage passengers, many of whom began their voyages in Ireland, Scandinavia, and Lebanon. Two-month-old Millvina Dean was the last Titanic survivor; she died in 2009.</div></div>
+          </div>
+          
+          </div>
+          
+          </div>
+
+        </div>
+        
+        <!--Loading Panel-->
+        <div id="loadingCon">
+    		<div id="loadingDialog">
+     			<div id="loadingHeader"></div>
+     			 <div id="loading">Loading map from ArcGIS Online<br />
+       			 <img id="loadingImg" alt="" src="images/progressBar.gif">
+    		    </div>
+   		    </div>
+ 		  </div	
+        
+      ></body>
+
+  </html>

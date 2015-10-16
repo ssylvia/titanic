@@ -1,0 +1,436 @@
+﻿ 	  html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr {
+	  margin:0; 
+	  padding:0;
+	  }
+	  
+	  html,body {
+      height:100%;
+      width:100%;
+	  overflow:hidden;
+      }
+
+      body {
+      background-color:#fff;
+      color:#333;
+      font-size:14px;
+      overflow:hidden;
+      font-family:Georgia, "Times New Roman", Times, serif;
+      }
+	  
+	  h4{
+	  font-weight:normal; 
+	  font-style:normal; 
+	  font-family:Arial, Helvetica, sans-serif; 
+	  color:#fff;
+	  margin:none;
+	  padding:none;
+	  }
+
+      a {
+      color:#666;
+	  text-decoration:underline;
+      }
+	  
+	  a:hover{
+	  text-decoration:underline;
+	  }
+
+      #header {
+      height:115px;
+      background:#444;
+	  color:#fff;
+      margin:0;
+      }
+	  
+	  #headerText{
+	  padding-top:20px;
+      padding-left:25px;
+	  width:70%;
+	  float:left;
+	  }
+
+      #title {
+	  font-family:Arial, Helvetica, sans-serif;
+      font-size:20px;
+	  font-weight:bold;
+      text-align:left;
+      white-space: nowrap;  
+      overflow: hidden;  
+      text-overflow: ellipsis;
+      -o-text-overflow:ellipsis;
+      }
+
+      #subtitle {
+      font-size:13px;
+	  margin-top:10px;
+      overflow: hidden;
+      }
+	  
+	  #logoArea{
+	  float:right;
+	  padding-top:25px;
+	  padding-right:25px;
+	  text-align:right;
+	  }
+	  
+	  #social{
+	  margin-bottom:20px;
+	  }
+	  
+	  #msLink{
+	  color:#fff;
+	  font-family:Arial, Helvetica, sans-serif;
+	  font-weight:bold;
+	  font-size:13px;
+	  outline:none;
+	  text-decoration:none;
+	  }
+	  
+	  #logo{
+	  border:none;
+	  outline:none;
+	  }
+	  
+	  #logoImg{
+	  border:none;
+	  outline:none;
+	  }
+	  
+	  #leftPane {
+	  width:300px;
+	  height:100%;
+	  font-size:0.9em;
+	  }
+	  
+	  #selectorCon{
+	  padding:30px;
+	  height:70px;
+	  }
+	  
+	  #srcLink{
+	  color:#06C;
+	  }
+	  
+	  .selectHeader{
+	  margin-left:20px;
+	  width:200px;
+	  font-family:Arial, Helvetica, sans-serif;
+	  font-size:12px;
+	  font-weight:normal;
+	  color:#848484;
+	  margin-bottom:10px;
+	  }
+	  
+	  .bolded{
+	  color:#444;
+	  font-weight:bold;
+	  }
+	  
+	  .red{
+	  color:#900;
+	  }
+	  
+	  .selected{
+	  cursor:default;
+	  }
+	  
+	  #selectArrow{
+	  position:absolute;
+	  height:27px;
+	  display:none;
+	  }
+	  
+	  #disclaimer{
+	  font-style:italic;
+	  font-size:12px;
+	  color:#777;
+	  padding-top:20px;
+	  }
+	  
+	  #allPassCount{
+	  font-size:52px;
+	  color:#444;
+	  }
+	  
+	  #allPassText{
+	  color:#444;
+	  padding-bottom:30px;
+	  }
+	  
+	  .oc{
+	  position:absolute;
+	  color:#fff;
+	  }
+	  
+	  .ocNum{
+	  font-size:30px;
+	  }
+	  
+	  #surv{
+	  top:185px;
+	  left:170px;
+	  }
+	  
+	  #per{
+	  top:185px;
+	  left:80px;
+	  }
+		  
+	  #chartArea{
+	  overflow:auto;
+	  padding:30px;
+	  }
+	  
+	  #pieChart{
+	  height:220px;
+	  width:220px;
+	  margin:auto;
+	  }
+	  
+	  #passConHeader{
+	  display:none;
+	  padding:10px 15px 10px 15px;
+	  border:1px #7989a3 solid;
+	  font-family:Arial, Helvetica, sans-serif;
+	  font-size:12px;
+	  color:#848484;
+	  }
+	  
+	  .surLeg{
+	  position:absolute;
+	  height:12px;
+	  width:12px;
+	  background-color:#98afd8;
+	  top:73px;
+	  left:47px;
+	  }
+	  
+	  .perLeg{
+	  position:absolute;
+	  height:12px;
+	  width:12px;
+	  background-color:#7989a3;
+	  top:73px;
+	  left:123px;
+	  }
+	  
+	  .surBox{
+	  position:absolute;
+	  height:12px;
+	  width:12px;
+	  background-color:#98afd8;
+	  top:7px;
+	  right:7px;
+	  }
+	  
+	  .perBox{
+	  position:absolute;
+	  height:12px;
+	  width:12px;
+	  background-color:#7989a3;
+	  top:7px;
+	  right:7px;
+	  }
+	  
+	  #passCon{
+	  overflow:auto;
+	  height:85%;
+	  }
+	  
+	  .pass{
+	  position:relative;
+	  margin:auto;
+	  padding:5px 5px 5px 15px;
+	  cursor:pointer;
+	  border:1px #7989a3 solid;
+	  border-bottom:none;
+	  }
+	  
+	  .passText{
+	  display:none;
+	  height:130px;
+	  font-family:Arial, Helvetica, sans-serif;
+	  font-size:11px;
+	  color:#666;
+	  padding:0px 10px 10px 25px;
+	  border-left:1px #7989a3 solid;
+	  border-right:1px #7989a3 solid;
+	  }
+	  
+	  .passActive{
+	  background-color:#d1d8e3;
+	  }
+	  
+	  .passSelected{
+	  cursor:default;
+	  }
+	  
+	  .last{
+	  border-bottom:1px #7989a3 solid;
+	  }
+	  
+	  #pass0{
+	  border-top:none;	
+	  }
+	  
+	  #passSelectorCon{
+	  width:100%;
+	  height:30px;
+	  background-color:#848484;
+	  border-top:none;
+	  }
+	  
+	  .passSelector{
+	  width:25%;
+	  height:24px;
+	  position:absolute;
+	  text-align:center;
+	  padding-top:6px;
+	  color:#fff;
+	  font-family:Arial, Helvetica, sans-serif;
+	  font-weight:bold;
+	  cursor:pointer;
+	  }
+	  
+	  #toggle1{
+	  left:25%;
+	  }
+	  
+	  #toggle2{
+	  left:50%;
+	  }
+	  
+	  #toggle3{
+	  left:75%;
+	  }
+	  
+	  .passSelector:hover{
+	  background-color:#666;
+	  }
+	  
+	  .selectedClass{
+	  background-color:#666;
+	  cursor:default;
+	  }
+	  
+	  #passSelLast{
+	  border:none;
+	  }
+	  
+	  .passengerContent{
+	  position:absolute;
+	  display:none;
+	  width:25%;
+	  background:#fff;
+	  z-index:101;
+	  }
+	  
+	  #selectFirstContent{
+	  left:25%;
+	  }
+	  
+	  #selectSecondContent{
+	  left:50%;
+	  }
+	  
+	  #selectThirdContent{
+	  left:75%;
+	  }
+	  
+	  .text{
+	  margin:15px;
+	  }
+	  
+	  #sources{
+	  width:100%;
+	  height:40px;
+	  }
+	  
+      #map {
+	  background-color:#90b5df;
+      margin:0;
+      }
+	  
+	  .passTip{
+	  position:absolute;
+	  display:none;
+	  padding:5px;
+	  background:#444;
+	  color:#fff;
+	  z-index:100;
+	  white-space:nowrap;
+	  }
+	  
+	  .ttArrow{
+	  position:absolute;
+	  width:20px;
+	  z-index:99;
+	  display:none;
+	  }
+	  
+	  #hoverInfo{
+	  position:absolute;
+	  padding:5px;
+	  max-width:200px;
+	  background-color:#dadada;
+	  border:#848484 solid 1px;
+	  -webkit-border-radius: 4px;
+	  -moz-border-radius: 4px;
+	  border-radius: 4px;
+	  -moz-box-shadow: 2px 2px 10px #333;
+	  -webkit-box-shadow: 2px 2px 10px #333;
+	  box-shadow: 2px 2px 10px #333;
+	  filter: progid: DXImageTransform.Microsoft.Shadow(strength = 2, direction = 135, color = '#333333');
+	  -ms-filter: "progid: DXImageTransform.Microsoft.Shadow(strength = 2, Direction = 135, Color = '#333333')";
+	  overflow:hidden;
+	  display:none;
+	  z-index:200;
+	  }
+	  
+	  #shadowDiv{
+	  position:absolute;
+	  height:100%;
+	  left:-10px;
+	  width:10px;
+	 -moz-box-shadow: 5px 0px 20px 5px #444444;
+	 -webkit-box-shadow: 5px 0px 20px 5px #444444;
+	 box-shadow: 5px 0px 20px 5px #444444;
+	 filter: progid: DXImageTransform.Microsoft.Shadow(strength = 5, direction = 90, color = '#444444');
+	 -ms-filter: "progid: DXImageTransform.Microsoft.Shadow(strength = 5, Direction = 90, Color = '#444444')";
+	  z-index:20;	  
+	  }
+	
+	  #loadingCon{
+	  position:absolute;
+	  z-index:99;
+	  width:100%;
+      top:40%;
+	  text-align:center;
+	  }
+		
+	  #loadingDialog{
+	  margin:auto;
+	  background-color:#dadada;
+	  width:300px	
+	  }
+		
+	  #loadingHeader{
+	  background-color:#444;
+	  color:#fff;
+	  padding-top:10px;
+	  padding-bottom:10px;
+	  width:300px;
+	  }
+		
+	  #loading{
+	  padding-top:10px;
+	  }
+		
+	  #loadingImg{
+	  margin-top:5px;
+	  padding-bottom:10px;
+	  }
+	  
+	  #map_zoom_slider{
+	  z-index:101;
+	  }
